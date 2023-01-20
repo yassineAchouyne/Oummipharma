@@ -1,0 +1,80 @@
+body{
+    
+    background-color: #f3f3f3;
+
+}
+.bg-cl{
+    background-color: hsl(148, 20%, 38%);
+}
+
+.cl{
+    color: hsl(148, 20%, 38%);
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i{
+    color: hsl(148, 20%, 38%);
+    font-size: 40px;
+}
+table{
+    text-align: center;
+}
+.imgg{
+    width: 30%;
+}
+.adminbody{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.form2{
+    justify-content: space-around;
+}
+.titreForm{
+    text-align: center;
+    padding-top: 10px;
+    color: hsl(148, 20%, 38%);
+}
+form div{
+    margin: 20px; 
+    display: flex;
+    flex-direction: column; 
+}
+form input{
+    color: hsl(148, 20%, 38%);
+    /* height:  25px; */
+    border-radius: 10px;
+    border: 0.5px solid hsl(148, 20%, 38%);
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+}
+form select{
+    color: hsl(148, 20%, 38%);
+    border-radius: 10px;
+    border: 0.5px solid hsl(148, 20%, 38%);
+    height:  40px;
+    
+}
+form label{
+    font-size: 17px;
+    color: hsl(148, 20%, 38%);
+}
+form input[type="submit"]{
+    background-color: hsl(148, 20%, 38%);
+    height:  33px;
+    color: white;
+    width: 300px;
+}
+caption{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 100%;
+}
