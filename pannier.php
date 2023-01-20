@@ -189,13 +189,13 @@ if (isset($_GET['del'])) {
 
   <div class="panier">
     <section>
-      <table>
-        <tr>
+      <table aria-describedby="mydesc">
+        <th>
           <th>Image</th>
           <th>Nom</th>
           <th>Prix</th>
           <th>Action</th>
-        </tr>
+        </th>
         <?php
         $total = 0;
         $req = $db->prepare("SELECT * from produit_panier where idc=? and statut='instance'");

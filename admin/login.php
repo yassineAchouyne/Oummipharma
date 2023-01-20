@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../inc/db.php";
+include_once "../inc/db.php";
 if (isset($_POST['connect'])) {
     $email = $_POST['email'];
     $pass = $_POST['password'];

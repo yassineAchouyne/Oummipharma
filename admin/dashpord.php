@@ -1,7 +1,7 @@
 <?php
-include "sessionAdmin.php";
-include "incAdmin/hedear.php";
-include "../inc/db.php";
+include_once "sessionAdmin.php";
+include_once "incAdmin/hedear.php";
+include_once "../inc/db.php";
 ?>
 
 
@@ -85,7 +85,7 @@ include "../inc/db.php";
                     <h2>Commandes récentes</h2>
                 </div>
 
-                <table>
+                <table >
                     <thead>
                         <tr>
                             <td>Image</td>

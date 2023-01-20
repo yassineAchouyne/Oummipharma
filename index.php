@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "inc/db.php";
+include_once "inc/db.php";
 include_once "inc/lang.php";
 if (empty($_SESSION['id_clien'])) {
   $profile = "login.php";

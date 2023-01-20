@@ -39,7 +39,7 @@
 </body>
 </html>
 <?php
-include "inc/db.php";
+include_once "inc/db.php";
 if (isset($_POST["connect"])) {
 $nom=$_POST['nom'];
 $email=$_POST['email'];

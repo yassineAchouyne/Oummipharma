@@ -1,7 +1,7 @@
 <?php
-include "sessionAdmin.php";
-include "../inc/db.php";
-include "incAdmin/hedear.php";
+include_once "sessionAdmin.php";
+include_once "../inc/db.php";
+include_once "incAdmin/hedear.php";
 if (empty($_POST['recherch'])) {
     $sql = $db->prepare("SELECT pp.id ,p.photo,p.nom,p.prix,c.nom cnom,c.tel from produit_panier pp inner join clien c on pp.idc = c.id
 inner join product p on p.idp=pp.idp where pp.statut='delivered'");

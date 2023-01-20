@@ -1,9 +1,9 @@
 <?php
-include "sessionAdmin.php";
-include "incAdmin/hedear.php";
+include_once "sessionAdmin.php";
+include_once "incAdmin/hedear.php";
 ?>
 <?php
-include "../inc/db.php";
+include_once "../inc/db.php";
 if (isset($_POST["ajouter"])) {
     $remise = $_POST['remise'];
     $idp = $_POST['idp'];

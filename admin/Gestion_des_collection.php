@@ -1,10 +1,10 @@
 <?php
-include "sessionAdmin.php";
-include "incAdmin/hedear.php";
+include_once "sessionAdmin.php";
+include_once "incAdmin/hedear.php";
 ?>
 <h1 align="center" class="text-success">Gestion des Collection</h1>
 <?php
-include "../inc/db.php";
+include_once "../inc/db.php";
 $sql = $db->prepare("SELECT nomc,idp,p.idc,photo from collection c inner join pr_collection p on c.idc=p.idc;");
 $sql->execute();
 $tab = $sql->fetchAll();
