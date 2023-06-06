@@ -1,6 +1,7 @@
 <?php
 
 include_once 'inc/session.php';
+include_once ('inc/lang.php');
 include_once 'inc/db.php';
 if (!empty($_GET['tab'])) {
   $table=$_GET['tab'];
@@ -40,6 +41,7 @@ if(!empty($_GET['idp'])&&!empty($_GET['prix'])){
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' rel="stylesheet" />
   <link href="assets/css/confirm.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/images/logol.png" type="image/svg+xml">
   <title>Success</title>
 </head>
 
@@ -50,11 +52,11 @@ if(!empty($_GET['idp'])&&!empty($_GET['prix'])){
         <img src="/assets/images/checked.png" alt="" class="img">
       </div>
       <div class="title">
-        <h3>Succès!</h3>
+        <h3><?= $titreconfirm ?></h3>
       </div>
-      <p class="para">Votre demande a été soumise avec succès</p>
+      <p class="para"><?= $messageconfirm ?></p>
       <form action="">
-        <a href="index.php" class="button" id="s_button">D'ACCORD</a>
+        <a href="index.php" class="button" id="s_button"><?= $btnconfirm ?></a>
       </form>
     </div>
   </div>

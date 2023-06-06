@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "inc/db.php";
-include_once "lang.php";
+include_once "inc/lang.php";
 if (empty($_SESSION['id_clien'])) {
   $profile = "login.php";
   $cpp="0";
@@ -60,7 +60,7 @@ if (empty($_SESSION['id_clien'])) {
 
     <div class="alert">
       <div class="container">
-        <p class="alert-text">Livraison gratuite dans la ville d'Agadir</p>
+        <p class="alert-text"><?= $titre ?></p>
       </div>
     </div>
 
@@ -108,23 +108,23 @@ if (empty($_SESSION['id_clien'])) {
           <ul class="navbar-list">
 
             <li>
-              <a href="index.php#home" class="navbar-link has-after">Home</a>
+              <a href="index.php#home" class="navbar-link has-after"><?= $home ?></a>
             </li>
 
             <li>
-              <a href="index#collection" class="navbar-link has-after">Collection</a>
+              <a href="index#collection" class="navbar-link has-after"><?= $collection ?></a>
             </li>
 
             <li>
-              <a href="index#produits" class="navbar-link has-after">Produits</a>
+              <a href="index#produits" class="navbar-link has-after"><?= $pr ?></a>
             </li>
 
             <li>
-              <a href="index#offer" class="navbar-link has-after">Offer</a>
+              <a href="index#offer" class="navbar-link has-after"><?= $offre ?></a>
             </li>
 
             <li>
-              <a href="index#blog" class="navbar-link has-after">Blog</a>
+              <a href="index#blog" class="navbar-link has-after"><?= $blog ?></a>
             </li>
 
           </ul>
@@ -159,23 +159,23 @@ if (empty($_SESSION['id_clien'])) {
       <ul class="navbar-list">
 
         <li>
-          <a href="index#home" class="navbar-link" data-nav-link>Home</a>
+          <a href="index#home" class="navbar-link" data-nav-link><?= $home ?></a>
         </li>
 
         <li>
-          <a href="index#collection" class="navbar-link" data-nav-link>Collection</a>
+          <a href="index#collection" class="navbar-link" data-nav-link><?= $collection ?></a>
         </li>
 
         <li>
-          <a href="index#produits" class="navbar-link" data-nav-link>Produits</a>
+          <a href="index#produits" class="navbar-link" data-nav-link><?= $pr ?></a>
         </li>
 
         <li>
-          <a href="index#offer" class="navbar-link" data-nav-link>Offer</a>
+          <a href="index#offer" class="navbar-link" data-nav-link><?= $offre ?></a>
         </li>
 
         <li>
-          <a href="index#blog" class="navbar-link" data-nav-link>Blog</a>
+          <a href="index#blog" class="navbar-link" data-nav-link><?= $blog ?></a>
         </li>
         <li>
           <a href="pannier.php" class="header-action-btn" aria-label="cart item">
@@ -247,7 +247,7 @@ if (empty($_SESSION['id_clien'])) {
   <section class="profil">
     <div>
       <form action="" method="post" id="" class="deconnect">
-        <input type="submit" class="btn btn-primary" name="deconnecter" value="Se déconnecter">
+        <input type="submit" class="btn btn-primary" name="deconnecter" value="<?= $sedeconnecter ?>">
       </form>
     </div>
     <div>
@@ -256,14 +256,14 @@ if (empty($_SESSION['id_clien'])) {
       <form class="was-validated" action="" id="formContent" method="POST">
         <div class="mb-3 row">
           <input type="text" class="fadeIn second" id="validationTextarea" name="firstName" value="<?= $tab['nom'] ?>" required>
-          <input type="submit" class="btn btn-primary col-2" name="nomCmplet" value="Modifier nom">
+          <input type="submit" class="btn btn-primary col-2" name="nomCmplet" value="<?= $mdfnom ?>">
         </div>
       </form><br>
 
       <form class="was-validated" action="" id="formContent" method="POST">
         <div class="mb-3 row">
           <input type="email" class="form-control is-invalid col" id="validationTextarea" name="email" value="<?= $tab['email'] ?>" required>
-          <input type="submit" class="btn btn-primary  col-2" value="Modifier email" name="vemail">
+          <input type="submit" class="btn btn-primary  col-2" value="<?= $mdfemail ?>" name="vemail">
         </div>
       </form><br>
 
@@ -279,13 +279,13 @@ if (empty($_SESSION['id_clien'])) {
         </div>
         <div class="mb-3 row">
           <input type="password" name="cp" class="" id="" value="" required placeholder="Confirmation mot de passe">
-          <input type="submit" name="mpass" class="btn btn-primary col-2" value="Modifier mot de pass">
+          <input type="submit" name="mpass" class="btn btn-primary col-2" value="<?= $mdfpass ?>">
         </div>
       </form><br>
       <form class="was-validated" action="" id="formContent" method="POST">
         <div class="mb-3 row">
           <input type="text" class="fadeIn second" id="validationTextarea" name="tel" value="<?= $tab['tel'] ?>" required>
-          <input type="submit" class="btn btn-primary col-2" name="Mtel" value="Modifier tel">
+          <input type="submit" class="btn btn-primary col-2" name="Mtel" value="<?= $mdftel ?>">
         </div>
       </form>
 
@@ -312,7 +312,7 @@ if (empty($_SESSION['id_clien'])) {
 
       <div class="footer-top">
 
-        <h1 class="nom">Bienvenue à Oummipharma</h1>
+        <h1 class="nom"><?= $footer ?></h1>
 
       </div>
 
@@ -380,8 +380,8 @@ if (empty($_SESSION['id_clien'])) {
   <!-- 
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script integrity="filehash" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script integrity="filehash" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

@@ -2,5 +2,5 @@ projectKey=Oummipharma
 serverUrl=http://localhost:9000
 serverVersion=9.8.0.63668
 dashboardUrl=http://localhost:9000/dashboard?id=Oummipharma
-ceTaskId=AYXQnH2ZObfbdYnbMYpH
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYXQnH2ZObfbdYnbMYpH
+ceTaskId=AYXQteO0ObfbdYnbMYpJ
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYXQteO0ObfbdYnbMYpJ

@@ -1,9 +1,10 @@
 <?php
 include_once "inc/session.php";
+include_once ("inc/lang.php");
 include_once "inc/db.php";
 
 // ajouter les produits si le variable id existe
-if (isset($_GET['id'])) {
+if (isset($_GET['id'])&&!empty($_SESSION['id_clien'])) {
   $req = $db->prepare("INSERT INTO produit_panier values(?,?,?,?)");
   $req->execute([null, $_GET['id'], $_SESSION['id_clien'], "instance"]);
   echo "<script>history.back()</script>";
@@ -14,6 +15,15 @@ if (isset($_GET['del'])) {
   $req = $db->prepare("DELETE from produit_panier where id=?");
   $req->execute([$_GET['del']]);
   header("Location : pannier.php");
+}
+if (empty($_SESSION['id_clien'])) {
+  $profile = "login.php";
+  $cpp = "0";
+} else {
+  $profile = "profile.php";
+  $req = $db->prepare("SELECT count(*) as cp from produit_panier where idc=? and statut='instance'");
+  $req->execute([$_SESSION['id_clien']]);
+  $cpp = $req->fetch()['cp'];
 }
 ?>
 <!DOCTYPE html>
@@ -31,7 +41,7 @@ if (isset($_GET['del'])) {
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script integrity="filehash" src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <!-- 
     - google font link
@@ -60,7 +70,7 @@ if (isset($_GET['del'])) {
 
     <div class="alert">
       <div class="container">
-        <p class="alert-text">Livraison gratuite dans la ville d'Agadir</p>
+        <p class="alert-text"><?= $titre ?></p>
       </div>
     </div>
 
@@ -87,7 +97,7 @@ if (isset($_GET['del'])) {
 
         <div class="header-actions">
 
-          <a href="login.php" class="header-action-btn" aria-label="user">
+          <a href="<?= $profile ?>" class="header-action-btn" aria-label="user">
             <ion-icon name="person-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
           </a>
 
@@ -97,9 +107,7 @@ if (isset($_GET['del'])) {
 
             <span class="btn-badge">
               <?php
-              $req = $db->prepare("SELECT count(*) as cp from produit_panier where idc=? and statut='instance'");
-              $req->execute([$_SESSION['id_clien']]);
-              echo $req->fetch()['cp'];
+              echo $cpp;
               ?>
             </span>
           </a>
@@ -110,23 +118,23 @@ if (isset($_GET['del'])) {
           <ul class="navbar-list">
 
             <li>
-              <a href="index.php" class="navbar-link has-after">Home</a>
+              <a href="index.php" class="navbar-link has-after"><?= $home ?></a>
             </li>
 
             <li>
-              <a href="index#collection" class="navbar-link has-after">Collection</a>
+              <a href="index#collection" class="navbar-link has-after"><?= $collection ?></a>
             </li>
 
             <li>
-              <a href="index#produits" class="navbar-link has-after">Produits</a>
+              <a href="index#produits" class="navbar-link has-after"><?= $pr ?></a>
             </li>
 
             <li>
-              <a href="index#offer" class="navbar-link has-after">Offer</a>
+              <a href="index#offer" class="navbar-link has-after"><?= $offre ?></a>
             </li>
 
             <li>
-              <a href="index#blog" class="navbar-link has-after">Blog</a>
+              <a href="index#blog" class="navbar-link has-after"><?= $blog ?></a>
             </li>
 
           </ul>
@@ -150,7 +158,7 @@ if (isset($_GET['del'])) {
 
       <div class="wrapper">
         <a href="#" class="logo">
-          <img src="./assets/images/logo.png" width="179" height="26" alt="Glowing">
+          <img src="./assets/images/logol.png" width="179" height="26" alt="Glowing">
         </a>
 
         <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
@@ -161,23 +169,23 @@ if (isset($_GET['del'])) {
       <ul class="navbar-list">
 
         <li>
-          <a href="index#home" class="navbar-link" data-nav-link>Home</a>
+          <a href="index#home" class="navbar-link" data-nav-link><?= $home ?></a>
         </li>
 
         <li>
-          <a href="index#collection" class="navbar-link" data-nav-link>Collection</a>
+          <a href="index#collection" class="navbar-link" data-nav-link><?= $collection ?></a>
         </li>
 
         <li>
-          <a href="index#produits" class="navbar-link" data-nav-link>Produits</a>
+          <a href="index#produits" class="navbar-link" data-nav-link><?= $pr ?></a>
         </li>
 
         <li>
-          <a href="index#offer" class="navbar-link" data-nav-link>Offer</a>
+          <a href="index#offer" class="navbar-link" data-nav-link><?= $offre ?></a>
         </li>
 
         <li>
-          <a href="index#blog" class="navbar-link" data-nav-link>Blog</a>
+          <a href="index#blog" class="navbar-link" data-nav-link><?= $blog ?></a>
         </li>
 
       </ul>
@@ -190,12 +198,12 @@ if (isset($_GET['del'])) {
   <div class="panier">
     <section>
       <table aria-describedby="mydesc">
-        <th>
-          <th>Image</th>
-          <th>Nom</th>
-          <th>Prix</th>
-          <th>Action</th>
-        </th>
+        <tr>
+          <th><?= $image ?></th>
+          <th><?= $nom ?></th>
+          <th><?= $prix ?></th>
+          <th><?= $action ?></th>
+        </tr>
         <?php
         $total = 0;
         $req = $db->prepare("SELECT * from produit_panier where idc=? and statut='instance'");
@@ -214,7 +222,7 @@ if (isset($_GET['del'])) {
           <tr>
             <td><img src="assets/images/<?= $prd['photo'] ?>"></td>
             <td><?= $prd['nom'] ?></td>
-            <td><?= $prd['prix'] ?> DH</td>
+            <td><?= $prd['prix'].' '.$mad ?></td>
             <td class="delet"><a href="pannier.php?del=<?= $val['id'] ?>"><img src="/assets/images/delete.png"></a></td>
       </tr>
 
@@ -222,7 +230,7 @@ if (isset($_GET['del'])) {
         ?>
 
         <tr class="total">
-          <th>Total : <?= $total ?> DH</th>
+          <th><?=$ttotal?> : <?= $total.' '.$mad ?></th>
           
           <th>
             <?php 
@@ -230,7 +238,7 @@ if (isset($_GET['del'])) {
             $table = json_encode($tab);
             $table=  urlencode($table) ;
             ?>
-              <a class="btn btn-primary onClick" href="confirm.php?tab=<?=$table?>">confirmer demande</a>
+              <a class="btn btn-primary onClick" href="confirm.php?tab=<?=$table?>"><?= $confirm ?></a>
            <?php }
           ?>
           </th>
@@ -240,19 +248,19 @@ if (isset($_GET['del'])) {
   </div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script integrity="filehash" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script integrity="filehash" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script integrity="filehash" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- 
     - custom js link
   -->
-  <script src="./assets/js/script.js" defer></script>
+  <script src="<?= $script ?>" defer></script>
 
   <!-- 
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script type="module" integrity="filehash" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule integrity="filehash" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

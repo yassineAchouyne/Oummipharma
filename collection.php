@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="assets/images/logol.png" type="image/svg+xml">
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9" integrity="filehash"></script>
 
     <title>Collection</title>
 </head>
@@ -19,6 +19,8 @@
         <h1>
 
         <?php 
+        
+        include_once('inc/lang.php');
         include_once('inc/db.php');
         if (!empty($_GET['idc'])) {
 
@@ -54,8 +56,8 @@
 
 </div>
 <div class="options">
-    <a onclick="history.back()">revenir</a>
-    <a href="confirm.php?idc=<?= $_GET['idc'] ?> " class="onClick">Achetez maintenant</a>
+    <a onclick="history.back()"><?= $revenir ?></a>
+    <a href="confirm.php?idc=<?= $_GET['idc'] ?> " class="onClick"><?= $achter ?></a>
 </div>
 <script src="assets/js/script.js"></script>
 </body>

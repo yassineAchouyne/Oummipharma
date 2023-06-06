@@ -36,6 +36,27 @@ if($lang=="fr"){
     $titreBlog="Plus à découvrir";
     $footer="Bienvenue à Oummipharma";
     $mad="DH";
+
+    $sedeconnecter="Se déconnecter";
+    $mdfnom="Modifier nom";
+    $mdfemail="Modifier email";
+    $mdfpass="Modifier mot de pass";
+    $mdftel="Modifier tel";
+
+    $revenir="revenir";
+    $ajoutercard="ajouter à la carte";
+    $confirm="confirmer demande";
+    $ttotal="Total";
+    $image="Image";
+    $nom="Nom";
+    $prix="Prix";
+    $action="Action";
+    
+    $script="./assets/js/script.js";
+
+    $titreconfirm="Succès!";
+    $messageconfirm="Votre demande a été soumise avec succès";
+    $btnconfirm="D'ACCORD";
 }else{
     $img="/assets/images/france.png";
     $lien="?lang=fr";
@@ -53,7 +74,7 @@ if($lang=="fr"){
     $produit="منتجاتنا";
     $Tousproduit="كل المنتوجات";
     $moins50="أقل من 50.00 درهم";
-    $qestion="لماذا تشتري من اوميفارما?";
+    $qestion="لماذا تشتري من اوميفارما؟";
     $titreQ1="نقي مضمون";
     $titreQ2="تماما خالية من القسوة";
     $titreQ3="مصادر المكونات";
@@ -67,5 +88,26 @@ if($lang=="fr"){
     $titreBlog="لاكتشاف المزيد";
     $footer="مرحبًا بكم في اوميفارما";
     $mad="درهم";
+
+    $sedeconnecter="تسجيل الخروج";
+    $mdfnom="تغيير الاسم";
+    $mdfemail="تغيير الايمايل";
+    $mdfpass="تغيير كلمى السر";
+    $mdftel="تغيير الهاتف";
+
+    $revenir="العودة للخلف";
+    $ajoutercard="أضف إلى السلة";
+    $confirm="تأكيد الطلب";
+    $ttotal="المجموع";
+    $image="الصورة";
+    $nom="الاسم";
+    $prix="التمن";
+    $action="فعل";
+
+    $script="./assets/js/sciptar.js";
+
+    $titreconfirm="!نجاح";
+    $messageconfirm="تم تقديم طلبك بنجاح";
+    $btnconfirm="حسنا";
 }
 ?>

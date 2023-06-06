@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include_once('inc/lang.php');
 include_once "inc/db.php";
 if(isset($_GET['id'])){
     $res=$db->prepare("SELECT * from product where idp=?");
@@ -30,8 +32,8 @@ if(isset($_GET['id'])){
                 
                 <span><?= $prd['prix'] ?> DH</span>
                 <div class="options">
-                    <a onclick="history.back()">revenir</a>
-                    <a href="pannier.php?id=<?= $prd['idp']?>">ajouter à la carte</a>
+                    <a onclick="history.back()"><?= $revenir ?></a>
+                    <a href="pannier.php?id=<?= $prd['idp']?>"><?= $ajoutercard ?></a>
                 </div>
             </div>
             <div class="description">
